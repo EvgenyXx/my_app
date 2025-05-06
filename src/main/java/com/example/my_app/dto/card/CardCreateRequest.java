@@ -2,9 +2,6 @@ package com.example.my_app.dto.card;
 
 
 import com.example.my_app.entity.CardType;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -27,6 +24,6 @@ public class CardCreateRequest {
     @FutureOrPresent(message = "Expiration date must be in the present or future")
     private LocalDate expirationDate;
 
-//    @NotNull(message = "Card type cannot be null")
-//    private CardType cardType;
+    @NotNull(message = "Card type cannot be null")
+    private CardType cardType;
 }

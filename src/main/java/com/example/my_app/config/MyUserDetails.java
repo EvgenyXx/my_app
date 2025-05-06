@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.UUID;
 
 
 @Data
@@ -30,5 +31,10 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return user.getNumberPhone();
+    }
+
+
+    public UUID getUserId(){
+        return user.getId();
     }
 }

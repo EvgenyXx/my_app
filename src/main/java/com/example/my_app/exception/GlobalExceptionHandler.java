@@ -1,5 +1,7 @@
 package com.example.my_app.exception;
 
+import com.example.my_app.exception.card.CardAccessDeniedException;
+import com.example.my_app.exception.card.CardNotFoundException;
 import com.example.my_app.exception.card.DuplicateCardNumberException;
 import com.example.my_app.exception.role.DuplicateRoleNameException;
 import com.example.my_app.exception.role.NullException;
@@ -143,6 +145,28 @@ public class GlobalExceptionHandler {
                         .httpStatus(HttpStatus.CONFLICT)
                         .message(e.getMessage())
                         .build(),HttpStatus.CONFLICT
+        );
+    }
+
+    @ExceptionHandler(CardNotFoundException.class)
+    public ResponseEntity<ResponseError> cardNotFound(CardNotFoundException e){
+        return new ResponseEntity<>(
+                ResponseError.builder()
+                        .time(LocalDateTime.now())
+                        .httpStatus(HttpStatus.NOT_FOUND)
+                        .message(e.getMessage())
+                        .build(),HttpStatus.NOT_FOUND
+        );
+    }
+
+    @ExceptionHandler(CardAccessDeniedException.class)
+    public ResponseEntity<ResponseError> cardAccessDenied(CardAccessDeniedException e){
+        return new ResponseEntity<>(
+                ResponseError.builder()
+                        .time(LocalDateTime.now())
+                        .httpStatus(HttpStatus.FORBIDDEN)
+                        .message(e.getMessage())
+                        .build(),HttpStatus.FORBIDDEN
         );
     }
 
