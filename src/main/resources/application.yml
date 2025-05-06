@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ru_shop
+    username: root
+    password: "admin"
+    driver-class-name: org.postgresql.Driver  # Указываем драйвер для PostgreSQL
+  jpa:
+    hibernate:
+      ddl-auto: none  # Flyway будет управлять схемой базы данных, отключаем ddl-auto
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+  flyway:
+    enabled: true  # Включаем Flyway для миграций
+    locations: classpath:db/migration  # Указываем путь к миграциям (например, классически db/migration)
+    baseline-on-migrate: true  # Если это новая база данных, можно использовать эту настройку для автоматического создания baseline
+    schemas: public  # Указываем схему, которую будет использовать Flyway
+    validate-on-migrate: true # Проверяет миграции на ошибки при запуске
+
+
+#  springdoc:
+#   swagger-ui:
+#    path: /swagger-ui.html
+
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    username: "evgenypavlov666@yandex.ru"  # Твой e-mail
+    password: "ysmgmjmzxrqyzgvy"  # Пароль приложения из Яндекса
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            enable: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html

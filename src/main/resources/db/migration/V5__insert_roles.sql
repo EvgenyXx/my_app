@@ -1,0 +1,10 @@
+-- V4__insert_roles.sql
+
+INSERT INTO roles (role_name)
+SELECT 'ROLE_ADMIN' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE role_name = 'ROLE_ADMIN');
+
+INSERT INTO roles (role_name)
+SELECT 'ROLE_USER' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE role_name = 'ROLE_USER');
+
+INSERT INTO roles (role_name)
+SELECT 'ROLE_MODERATOR' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE role_name = 'ROLE_MODERATOR');
